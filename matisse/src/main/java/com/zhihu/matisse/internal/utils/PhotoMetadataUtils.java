@@ -155,9 +155,15 @@ public final class PhotoMetadataUtils {
     }
 
     private static boolean shouldRotate(ContentResolver resolver, Uri uri) {
+        final String path = getPath(resolver, uri);
+        if (path == null) {
+            Log.e(TAG, "could not read exif info of the image: " + uri);
+            return false;
+        }
+
         ExifInterface exif;
         try {
-            exif = ExifInterfaceCompat.newInstance(getPath(resolver, uri));
+            exif = ExifInterfaceCompat.newInstance(path);
         } catch (IOException e) {
             Log.e(TAG, "could not read exif info of the image: " + uri);
             return false;
