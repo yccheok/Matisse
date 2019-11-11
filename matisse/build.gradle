@@ -18,16 +18,16 @@ apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'checkstyle'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 29
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
         abortOnError false
@@ -37,12 +37,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "androidx.appcompat:appcompat:1.0.2"
-    implementation "androidx.annotation:annotation:1.0.1"
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.annotation:annotation:1.1.0"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
     implementation 'it.sephiroth.android.library.imagezoom:library:1.0.4'
 
-    compileOnly 'com.github.bumptech.glide:glide:3.7.0'
+    compileOnly 'com.github.bumptech.glide:glide:4.9.0'
     compileOnly 'com.squareup.picasso:picasso:2.5.2'
 }
 
@@ -52,7 +52,7 @@ publish {
     userOrg = 'zhihu'
     groupId = 'com.zhihu.android'
     artifactId = 'matisse'
-    publishVersion = '0.5.3-beta2'
+    publishVersion = '0.5.3-beta3'
     desc = 'A well-designed local image selector for Android'
     website = 'https://www.zhihu.com/'
 }
