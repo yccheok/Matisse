@@ -19,10 +19,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.os.Build;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.util.Log;
 
 public class RoundedRectangleImageView extends AppCompatImageView {
+    private static final String TAG = "RoundedRectangleImageView";
 
     private float mRadius; // dp
     private Path mRoundedRectPath;
@@ -59,7 +62,16 @@ public class RoundedRectangleImageView extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.clipPath(mRoundedRectPath);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            canvas.clipPath(mRoundedRectPath);
+        } else {
+            try {
+                canvas.clipPath(mRoundedRectPath);
+            } catch (java.lang.UnsupportedOperationException e) {
+                Log.e(TAG, "", e);
+            }
+        }
+
         super.onDraw(canvas);
     }
 }
