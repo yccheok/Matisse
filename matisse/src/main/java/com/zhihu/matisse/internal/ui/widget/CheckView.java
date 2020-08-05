@@ -16,6 +16,7 @@
 package com.zhihu.matisse.internal.ui.widget;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ import android.graphics.drawable.Drawable;
 import androidx.core.content.res.ResourcesCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.zhihu.matisse.R;
@@ -210,7 +212,13 @@ public class CheckView extends View {
         if (mTextPaint == null) {
             mTextPaint = new TextPaint();
             mTextPaint.setAntiAlias(true);
-            mTextPaint.setColor(Color.WHITE);
+
+            TypedValue typedValue = new TypedValue();
+            Resources.Theme theme = getContext().getTheme();
+            theme.resolveAttribute(R.attr.item_checkCircle_textColor, typedValue, true);
+            int color = typedValue.data;
+            mTextPaint.setColor(color);
+
             mTextPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
             mTextPaint.setTextSize(12.0f * mDensity);
         }
