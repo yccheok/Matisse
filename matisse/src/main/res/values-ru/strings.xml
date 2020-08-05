@@ -18,12 +18,9 @@
     <string name="album_name_all">Все</string>
 
     <string name="button_preview">Предпросмотр</string>
-    <string name="button_apply_default">Применить</string>
-    <string name="button_apply">Применить(%1$d)</string>
     <string name="button_back">Назад</string>
     <string name="photo_grid_capture">Камера</string>
     <string name="empty_text">Пусто</string>
-    <string name="button_ok">OK</string>
 
     <string name="error_over_count_default">Вы выбрали максимальное количество файлов</string>
     <plurals name="error_over_count">
@@ -38,6 +35,4 @@
     <string name="error_type_conflict">Невозможно выбрать изображения и видео одновременно</string>
     <string name="error_no_video_activity">Приложение для предпросмотра видео не найдено</string>
     <string name="button_original">Оригинал</string>
-    <string name="button_sure">Применить(%1$d)</string>
-    <string name="button_sure_default">Применить</string>
 </resources>

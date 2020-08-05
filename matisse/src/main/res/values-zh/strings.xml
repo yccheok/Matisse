@@ -18,12 +18,9 @@
     <string name="album_name_all">全部</string>
 
     <string name="button_preview">预览</string>
-    <string name="button_apply_default">使用</string>
-    <string name="button_apply">使用(%1$d)</string>
     <string name="button_back">返回</string>
     <string name="photo_grid_capture">拍一张</string>
     <string name="empty_text">还没有图片或视频</string>
-    <string name="button_ok">我知道了</string>
 
     <string name="error_over_count_default">您已经达到最大选择数量</string>
     <plurals name="error_over_count">
@@ -37,6 +34,4 @@
     <string name="error_over_original_size">"该照片大于 %1$d M，无法上传将取消勾选原图"</string>
     <string name="error_over_original_count">"有 %1$d 张照片大于 %2$d M\n无法上传，将取消勾选原图"</string>
     <string name="button_original">原图</string>
-    <string name="button_sure_default">确定</string>
-    <string name="button_sure">确定(%1$d)</string>
 </resources>

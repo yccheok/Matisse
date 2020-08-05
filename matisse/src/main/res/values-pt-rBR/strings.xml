@@ -18,12 +18,9 @@
     <string name="album_name_all">Todas as mídias</string>
 
     <string name="button_preview">Pré-visualizaçao</string>
-    <string name="button_apply_default">Aplicar</string>
-    <string name="button_apply">Aplicar(%1$d)</string>
     <string name="button_back">Voltar</string>
     <string name="photo_grid_capture">Câmera</string>
     <string name="empty_text">Nenhuma mídia disponível</string>
-    <string name="button_ok">OK</string>
 
     <string name="error_over_count_default">Você atingiu o máximo de itens possíveis para seleção</string>
     <plurals name="error_over_count">

@@ -18,12 +18,9 @@
     <string name="album_name_all">Todos</string>
 
     <string name="button_preview">Previsualizar</string>
-    <string name="button_apply_default">Seleccionar</string>
-    <string name="button_apply">Seleccionar(%1$d)</string>
     <string name="button_back">Atrás</string>
     <string name="photo_grid_capture">Cámara</string>
     <string name="empty_text">Ningún archivo seleccionado</string>
-    <string name="button_ok">OK</string>
 
     <string name="error_over_count_default">Has alcanzado el máximo de archivos seleccionables</string>
     <plurals name="error_over_count">

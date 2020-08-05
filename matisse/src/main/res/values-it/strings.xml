@@ -18,12 +18,9 @@
     <string name="album_name_all">Tutti i media</string>
 
     <string name="button_preview">Anteprima</string>
-    <string name="button_apply_default">Conferma</string>
-    <string name="button_apply">Conferma(%1$d)</string>
     <string name="button_back">Indietro</string>
     <string name="photo_grid_capture">Camera</string>
     <string name="empty_text">Nessun media disponibile</string>
-    <string name="button_ok">OK</string>
 
     <string name="error_over_count_default">Hai selezionato il numero massimo di elementi</string>
     <plurals name="error_over_count">

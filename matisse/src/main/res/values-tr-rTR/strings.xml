@@ -18,12 +18,9 @@
     <string name="album_name_all">Tüm Medya</string>
 
     <string name="button_preview">Ön İzleme</string>
-    <string name="button_apply_default">Uygula</string>
-    <string name="button_apply">Uygula(%1$d)</string>
     <string name="button_back">Geri</string>
     <string name="photo_grid_capture">Kamera</string>
     <string name="empty_text">Henüz medya yok</string>
-    <string name="button_ok">TAMAM</string>
 
     <string name="error_over_count_default">Maksimum seçilebilir değere ulaştınız</string>
     <plurals name="error_over_count">

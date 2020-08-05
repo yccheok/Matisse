@@ -18,12 +18,9 @@
     <string name="album_name_all">Всі</string>
 
     <string name="button_preview">Перегляд</string>
-    <string name="button_apply_default">Застосувати</string>
-    <string name="button_apply">Застосувати(%1$d)</string>
     <string name="button_back">Назад</string>
     <string name="photo_grid_capture">Камера</string>
     <string name="empty_text">Пусто</string>
-    <string name="button_ok">OK</string>
 
     <string name="error_over_count_default">Вы обрали максимальну кількість файлів</string>
     <plurals name="error_over_count">

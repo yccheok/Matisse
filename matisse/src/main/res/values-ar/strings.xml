@@ -3,12 +3,9 @@
     <string name="album_name_all">جميع وسائل الإعلام</string>
 
     <string name="button_preview">معاينة</string>
-    <string name="button_apply_default">تطبيق</string>
-    <string name="button_apply">تطبيق (%1$d)</string>
     <string name="button_back">رجوع</string>
     <string name="photo_grid_capture">كاميرا</string>
     <string name="empty_text">لا وسائل الإعلام حتى الآن</string>
-    <string name="button_ok">تم</string>
 
     <string name="error_over_count_default">لقد وصلت إلى الحد الأقصى للاختيار</string>
     <plurals name="error_over_count">

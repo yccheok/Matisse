@@ -2,14 +2,9 @@
 <resources>
     <string name="error_over_original_size">Không thể chọn hình ảnh lớn hơn %1$d MB</string>
     <string name="album_name_all">Tất cả</string>
-    <string name="button_apply">Áp dụng(%1$d)</string>
-    <string name="button_apply_default">Áp dụng</string>
     <string name="button_back">Về</string>
-    <string name="button_ok">Đồng ý</string>
     <string name="button_original">Bản gốc</string>
     <string name="button_preview">Xem trước</string>
-    <string name="button_sure">Đồng ý(%1$d)</string>
-    <string name="button_sure_default">Đồng ý</string>
     <string name="empty_text">Chưa có dữ liệu</string>
     <string name="error_file_type">Không hỗ trợ loại tệp này</string>
     <string name="error_no_video_activity">Không tìm thấy ứng dụng nào hỗ trợ xem trước video</string>
