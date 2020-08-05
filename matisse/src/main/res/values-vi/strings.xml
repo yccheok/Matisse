@@ -13,7 +13,9 @@
     <string name="empty_text">Chưa có dữ liệu</string>
     <string name="error_file_type">Không hỗ trợ loại tệp này</string>
     <string name="error_no_video_activity">Không tìm thấy ứng dụng nào hỗ trợ xem trước video</string>
-    <string name="error_over_count">Bạn chỉ có thể chọn tối đa %1$d tệp</string>
+    <plurals name="error_over_count">
+        <item quantity="other">Bạn chỉ có thể chọn tối đa %1$d tệp</item>
+    </plurals>
     <string name="error_over_count_default">Bạn đã đạt đến mức tối đa có thể lựa chọn</string>
     <string name="error_over_original_count">%1$d hình ảnh trên %2$d MB. Bản gốc sẽ được bỏ chọn</string>
     <string name="error_over_quality">Chất lượng quá cao</string>
