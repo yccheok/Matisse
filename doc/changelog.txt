@@ -1,0 +1,5 @@
+﻿This file summarizes changes in Matisse releases.
+
+2.0 - 2020-08-13
+================
+Feature: Support Android 10.
