@@ -1,5 +1,9 @@
 ﻿This file summarizes changes in Matisse releases.
 
+2.1 - 2020-08-20
+================
+Bugfix:  Avoid "Field requires API level 29 (current min is 14)" warning.
+
 2.0 - 2020-08-13
 ================
 Feature: Support Android 10.

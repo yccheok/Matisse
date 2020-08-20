@@ -120,7 +120,11 @@ public class AlbumMediaLoader extends CursorLoader {
     }
     // ===============================================================
 
-    private static final String ORDER_BY = MediaStore.Images.Media.DATE_TAKEN + " DESC";
+    // Avoid "Field requires API level 29 (current min is 14)" warning.
+    //private static final String ORDER_BY = MediaStore.Images.Media.DATE_TAKEN + " DESC";
+    private static final String DATE_TAKEN = "datetaken";
+    private static final String ORDER_BY = DATE_TAKEN + " DESC";
+
     private final boolean mEnableCapture;
 
     private AlbumMediaLoader(Context context, String selection, String[] selectionArgs, boolean capture) {
