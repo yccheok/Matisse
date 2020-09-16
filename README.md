@@ -20,11 +20,11 @@ Gradle:
 
 ```groovy
 repositories {
-    jcenter()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
-    implementation 'com.zhihu.android:matisse:$latest_version'
+    implementation 'com.github.yccheok:Matisse:2.1'
 }
 ```
 
