@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.yccheok:Matisse:2.2'
+    implementation 'com.github.yccheok:Matisse:2.3'
 }
 ```
 
