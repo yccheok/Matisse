@@ -116,7 +116,16 @@ public class AlbumLoader extends CursorLoader {
     }
     // =============================================
 
-    private static final String BUCKET_ORDER_BY = "datetaken DESC";
+    // datetaken usually is in milliseconds.
+    // datetaken can be null sometimes.
+    private static final String datetaken = "datetaken";
+    // date_added usually is in seconds.
+    private static final String date_added = MediaStore.Images.Media.DATE_ADDED;
+    // Not sure I need to include MediaStore.Images.Media.DATE_MODIFIED? So far, I notice
+    // MediaStore.Images.Media.DATE_MODIFIED is having same value as date_added. Whenever there is
+    // new image added, "datetaken"/ "date_added"/ "date_modified" will all be updated.
+    private static final String BUCKET_ORDER_BY = "MAX(IFNULL(" + datetaken + ", 0), IFNULL(" + date_added + ", 0)*1000) DESC";
+
 
     private AlbumLoader(Context context, String selection, String[] selectionArgs) {
         super(
