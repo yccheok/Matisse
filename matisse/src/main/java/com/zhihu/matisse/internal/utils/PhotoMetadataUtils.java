@@ -90,6 +90,8 @@ public final class PhotoMetadataUtils {
             return new Point(width, height);
         } catch (FileNotFoundException e) {
             return new Point(0, 0);
+        } catch (java.lang.IllegalStateException e) {
+            return new Point(0, 0);
         } finally {
             if (is != null) {
                 try {
