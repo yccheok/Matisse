@@ -83,6 +83,7 @@ public class AlbumMediaCollection implements LoaderManager.LoaderCallbacks<Curso
     public void onDestroy() {
         if (mLoaderManager != null) {
             mLoaderManager.destroyLoader(LOADER_ID);
+            mLoaderManager = null;
         }
         mCallbacks = null;
     }

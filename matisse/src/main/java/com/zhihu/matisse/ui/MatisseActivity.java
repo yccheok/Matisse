@@ -394,6 +394,15 @@ public class MatisseActivity extends AppCompatActivity implements
             mContainer.setVisibility(View.VISIBLE);
             mEmptyView.setVisibility(View.GONE);
             Fragment fragment = MediaSelectionFragment.newInstance(album);
+
+            Fragment oldFragment = getSupportFragmentManager().findFragmentById(R.id.container);
+            if (oldFragment instanceof MediaSelectionFragment) {
+                // So that we need not rely on the calling sequence of onDestroyView. Sometimes,
+                // old fragment onDestroyView only called, after new fragment has finished all
+                // execution. By that time, it is too late.
+                ((MediaSelectionFragment)oldFragment).albumMediaCollectionOnDestroy();
+            }
+
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, fragment, MediaSelectionFragment.class.getSimpleName())

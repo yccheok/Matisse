@@ -116,6 +116,11 @@ public class MediaSelectionFragment extends Fragment implements
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
+        albumMediaCollectionOnDestroy();
+    }
+
+    public void albumMediaCollectionOnDestroy() {
         mAlbumMediaCollection.onDestroy();
     }
 
