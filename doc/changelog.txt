@@ -1,5 +1,9 @@
 This file summarizes changes in Matisse releases.
 
+2.6 - 2023-01-10
+================
+Feature: Migration to Android 13.
+
 2.5 - 2022-10-26
 ================
 Bugfix:  Empty image selection after migrating to API 31.
