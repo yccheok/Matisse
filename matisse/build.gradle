@@ -17,11 +17,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'checkstyle'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 35
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 33
+        minSdkVersion 21
+        targetSdkVersion 35
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -36,9 +36,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    def activity_version = "1.10.1"
+    // Java language implementation
+    implementation "androidx.activity:activity:$activity_version"
+
     implementation "androidx.appcompat:appcompat:1.5.1"
     implementation "androidx.annotation:annotation:1.5.0"
-    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation 'com.google.android.material:material:1.3.0-alpha03'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'it.sephiroth.android.library.imagezoom:library:1.0.4'
 
     compileOnly 'com.github.bumptech.glide:glide:4.11.0'

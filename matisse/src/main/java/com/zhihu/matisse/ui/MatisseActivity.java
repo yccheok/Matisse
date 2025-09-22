@@ -20,13 +20,21 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +44,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zhihu.matisse.R;
@@ -93,18 +103,48 @@ public class MatisseActivity extends AppCompatActivity implements
     private CheckRadioView mOriginal;
     private boolean mOriginalEnable;
 
+    private RelativeLayout root;
+    private Toolbar toolbar;
+    private FrameLayout bottomToolbar;
+
+    private void edgeToEdge(boolean windowLightStatusBar) {
+        if (windowLightStatusBar) {
+            EdgeToEdge.enable(
+                    this,
+                    SystemBarStyle.light(
+                            ContextCompat.getColor(this, android.R.color.transparent),
+                            ContextCompat.getColor(this, android.R.color.transparent)
+                    )
+            );
+        } else {
+            EdgeToEdge.enable(
+                    this,
+                    SystemBarStyle.dark(
+                            ContextCompat.getColor(this, android.R.color.transparent)
+                    )
+            );
+        }
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         // programmatically set theme before super.onCreate()
         mSpec = SelectionSpec.getInstance();
         setTheme(mSpec.themeId);
         super.onCreate(savedInstanceState);
+
+        edgeToEdge(false);
+
         if (!mSpec.hasInited) {
             setResult(RESULT_CANCELED);
             finish();
             return;
         }
         setContentView(R.layout.activity_matisse);
+
+        this.root = this.findViewById(R.id.root);
+        this.toolbar = this.findViewById(R.id.toolbar);
+        this.bottomToolbar = this.findViewById(R.id.bottom_toolbar);
 
         if (mSpec.needOrientationRestriction()) {
             setRequestedOrientation(mSpec.orientation);
@@ -153,6 +193,49 @@ public class MatisseActivity extends AppCompatActivity implements
         mAlbumCollection.onCreate(this, this);
         mAlbumCollection.onRestoreInstanceState(savedInstanceState);
         mAlbumCollection.loadAlbums();
+
+        setOnApplyWindowInsetsListener();
+    }
+
+    private void setOnApplyWindowInsetsListener() {
+        final Rect initialToolbarPadding = new Rect(
+                toolbar.getPaddingLeft(),
+                toolbar.getPaddingTop(),
+                toolbar.getPaddingRight(),
+                toolbar.getPaddingBottom()
+        );
+
+        final Rect initialBottomToolbarPadding = new Rect(
+                bottomToolbar.getPaddingLeft(),
+                bottomToolbar.getPaddingTop(),
+                bottomToolbar.getPaddingRight(),
+                bottomToolbar.getPaddingBottom()
+        );
+
+        // 2. Apply a listener to handle window insets for all orientations
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            // Get the insets for the system bars (status bar, navigation bar)
+            Insets theInsets = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout()
+            );
+
+            toolbar.setPadding(
+                    initialToolbarPadding.left + theInsets.left,
+                    initialToolbarPadding.top + theInsets.top,
+                    initialToolbarPadding.right + theInsets.right,
+                    initialToolbarPadding.bottom + 0
+            );
+
+            bottomToolbar.setPadding(
+                    initialBottomToolbarPadding.left + theInsets.left,
+                    initialBottomToolbarPadding.top + 0,
+                    initialBottomToolbarPadding.right + theInsets.right,
+                    initialBottomToolbarPadding.bottom + theInsets.bottom
+            );
+
+            // Return the insets to allow the system to continue processing them
+            return insets;
+        });
     }
 
     @Override

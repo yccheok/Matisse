@@ -18,8 +18,16 @@ package com.zhihu.matisse.internal.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +35,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.zhihu.matisse.R;
@@ -72,16 +81,43 @@ public abstract class BasePreviewActivity extends AppCompatActivity implements V
     private FrameLayout mTopToolbar;
     private boolean mIsToolbarHide = false;
 
+    private RelativeLayout root;
+
+    private void edgeToEdge(boolean windowLightStatusBar) {
+        if (windowLightStatusBar) {
+            EdgeToEdge.enable(
+                    this,
+                    SystemBarStyle.light(
+                            ContextCompat.getColor(this, android.R.color.transparent),
+                            ContextCompat.getColor(this, android.R.color.transparent)
+                    )
+            );
+        } else {
+            EdgeToEdge.enable(
+                    this,
+                    SystemBarStyle.dark(
+                            ContextCompat.getColor(this, android.R.color.transparent)
+                    )
+            );
+        }
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(SelectionSpec.getInstance().themeId);
         super.onCreate(savedInstanceState);
+
+        edgeToEdge(false);
+
         if (!SelectionSpec.getInstance().hasInited) {
             setResult(RESULT_CANCELED);
             finish();
             return;
         }
         setContentView(R.layout.activity_media_preview);
+
+        this.root = this.findViewById(R.id.root);
+
         if (Platform.hasKitKat()) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
@@ -174,6 +210,35 @@ public abstract class BasePreviewActivity extends AppCompatActivity implements V
         });
 
         updateApplyButton();
+
+        setOnApplyWindowInsetsListener();
+    }
+
+    private void setOnApplyWindowInsetsListener() {
+        final Rect initialPadding = new Rect(
+                root.getPaddingLeft(),
+                root.getPaddingTop(),
+                root.getPaddingRight(),
+                root.getPaddingBottom()
+        );
+
+        // 2. Apply a listener to handle window insets for all orientations
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            // Get the insets for the system bars (status bar, navigation bar)
+            Insets theInsets = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout()
+            );
+
+            root.setPadding(
+                    initialPadding.left + theInsets.left,
+                    initialPadding.top + theInsets.top,
+                    initialPadding.right + theInsets.right,
+                    initialPadding.bottom + theInsets.bottom
+            );
+
+            // Return the insets to allow the system to continue processing them
+            return insets;
+        });
     }
 
     @Override
