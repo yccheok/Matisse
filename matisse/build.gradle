@@ -32,6 +32,13 @@ android {
     lint {
         abortOnError false
     }
+
+    // Required for AGP 8+ to publish a release AAR
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
@@ -72,4 +79,18 @@ task checkstyle(type:Checkstyle) {
     showViolations true
     classpath = files()
     source 'src/main/java'
+}
+
+// Explicit Maven publication so JitPack can upload the AAR
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.yccheok'      // ← Change to your GitHub user/org
+                artifactId = 'Matisse'              // ← Change if you want a different artifact name
+                version = '2.8'                     // ← Match your Git tag / release
+            }
+        }
+    }
 }
