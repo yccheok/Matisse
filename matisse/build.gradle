@@ -89,7 +89,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.yccheok'      // ← Change to your GitHub user/org
                 artifactId = 'Matisse'              // ← Change if you want a different artifact name
-                version = '2.8'                     // ← Match your Git tag / release
+                version = '2.9'                     // ← Match your Git tag / release
             }
         }
     }
