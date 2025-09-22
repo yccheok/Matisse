@@ -15,6 +15,7 @@
  */
 apply plugin: 'com.android.library'
 apply plugin: 'checkstyle'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 35
